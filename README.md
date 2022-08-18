@@ -24,3 +24,4 @@ Foi desenvolvido um jogo de perguntas e respostas, utilizando o React e Redux, o
 
 ## Prévia
 
+![trivia](https://user-images.githubusercontent.com/99517204/185489228-3b5183de-9d1a-418b-b550-eb3e81f92f4a.gif)

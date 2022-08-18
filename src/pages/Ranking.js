@@ -15,30 +15,11 @@ class Ranking extends Component {
   };
 
   componentDidMount = () => {
-    const { score, email, name } = this.props;
-    const gravatarPic = getAvatar(email);
-    const array = {
-      name,
-      score,
-      email: gravatarPic,
-    };
-    localStorage.setItem('player', JSON.stringify(array));
-    const ranking = JSON.parse(localStorage.getItem('ranking'));
-    const teste = JSON.parse(localStorage.getItem('player'));
-    if (ranking === null) {
-      const juntatudo = [teste];
-      localStorage.setItem('ranking', JSON.stringify(juntatudo));
-      const estado = JSON.parse(localStorage.getItem('ranking'));
-      this.setState({ rankingState: estado });
-    } else {
-      const juntatudo = [...ranking, teste];
-      localStorage.setItem('ranking', JSON.stringify(juntatudo));
-      const estado = JSON.parse(localStorage.getItem('ranking'));
-      const sortState = estado.sort(function (a, b) {
-        return b.score - a.score;
+    const estado = JSON.parse(localStorage.getItem('ranking'));
+    const sortState = estado.sort(function (a, b) {
+      return b.score - a.score;
       });
       this.setState({ rankingState: sortState });
-    }
   };
 
   render() {

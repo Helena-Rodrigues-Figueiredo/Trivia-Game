@@ -15,6 +15,26 @@ handleClickRanking = () => {
   history.push('/ranking');
 }
 
+componentDidMount = () => {
+  const { score, email, name } = this.props;
+  const gravatarPic = getAvatar(email);
+  const array = {
+    name,
+    score,
+    email: gravatarPic,
+  };
+  localStorage.setItem('player', JSON.stringify(array));
+  const ranking = JSON.parse(localStorage.getItem('ranking'));
+  const getPlayer = JSON.parse(localStorage.getItem('player'));
+  if (ranking === null) {
+    const getAll = [getPlayer];
+    localStorage.setItem('ranking', JSON.stringify(getAll));
+  } else {
+    const getAll = [...ranking, getPlayer];
+    localStorage.setItem('ranking', JSON.stringify(getAll));
+  }
+};
+
 render() {
   const { email, name, score, assertions } = this.props;
   const gravatarPic = getAvatar(email);
